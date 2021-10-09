@@ -7,7 +7,7 @@ def main(args):
 
     if not args.assemble:
         convert_video = ConvertVideo(args.input)
-        convert_video.generate_palette(args.no_transparent)
+        convert_video.generate_palette(args.transparent)
         convert_video.to_gif()
         convert_video.clear_temp_files()
 
@@ -34,7 +34,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Converts video/sequence to GIF')
     parser.add_argument('-i', '--input', type=str, metavar='', help='Input file path', required=True)
 
-    parser.add_argument('-w', '--no-transparent', action='store_false', help='Disable transparency', required=False)
+    parser.add_argument('-w', '--transparent', action='store_true', help='Enable transparency', required=False)
     parser.add_argument('-l', '--lossy', type=str, default=None, metavar='', help='No. of artefacts allowed', required=False)
     parser.add_argument('-z', '--optimise', type=int, default=None, metavar='', help='Optimise GIF file size (1 - 3)', required=False)
     

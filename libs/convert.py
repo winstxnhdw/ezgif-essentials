@@ -7,6 +7,7 @@ class Convert:
         self.input_path = input_path
         self.output_path = f"{self.input_path.split('.')[0]}_converted.gif"
 
+        self.transparency = None
         self.optimisation_level = 0
         self.compression_level = 0
 

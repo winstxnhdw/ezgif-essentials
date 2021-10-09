@@ -34,16 +34,18 @@ class ConvertVideo(Convert):
 
         return round(float(video_info['duration']), 2)
 
-    def generate_palette(self, reserve_transparent='True'):
+    def generate_palette(self, reserve_transparency='False'):
 
         (
             ffmpeg
             .input(self.input_path)
-            .filter(filter_name='palettegen', reserve_transparent=reserve_transparent)
+            .filter(filter_name='palettegen', reserve_transparent=str(reserve_transparency))
             .output(self.output_palette)
             .overwrite_output()
             .run()
         )
+
+        self.transparency = reserve_transparency
 
     def to_gif(self):
 
@@ -89,3 +91,4 @@ class ConvertVideo(Convert):
         print(f"Frames:         {output_frames} <- {input_frames}")
         print(f"Optimisation:   Level {self.optimisation_level}")
         print(f"Compression:    {self.compression_level} allowable artefacts")
+        print(f"Transparency:   {self.transparency}")
