@@ -7,6 +7,8 @@ Want to generate GIFs of the highest quality? Tired of having too many unecessar
 |-------------------------------------------------|------------------------------------------|
 |![](resources/converted-by-ezgif-essentials.gif) | ![](resources/converted-by-ezgif.com.gif)|
 
+> Comparisons are both set to their respective highest settings. There isn't even a competition. The answer is obvious.
+
 ## Installation
 ```bash
 $ git clone https://github.com/winstxnhdw/ezgif-essentials.git
