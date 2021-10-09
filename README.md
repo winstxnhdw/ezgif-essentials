@@ -1,5 +1,6 @@
 # ezgif-essentials
-**Want to generate GIFs of the highest quality? Tired of having too many unecessary parameters? You also happen to be a motion graphic designer?** `ezgif-essentials` is a pseudo-opinionated video/sequence to GIF CLI converter. It uses the same robust conversion pipeline as [ezGIF](https://ezgif.com/) without the frame rate limitations or involuntary compression.
+**Want to generate GIFs of the highest quality? Tired of having too many unecessary parameters? You also happen to be a motion graphic designer?** `ezgif-essentials` is a pseudo-opinionated video/sequence to GIF CLI converter. It uses the same robust conversion pipeline as [ezGIF](https://ezgif.com/) without the frame rate limitations or involuntary compression. It is powered by [FFmpeg](https://github.com/kkroening/ffmpeg-python) and [Gifsicle](https://github.com/kohler/gifsicle)
+
 > WARNING: Image sequence conversions are garbage at the moment
 
 ## Installation
@@ -25,7 +26,7 @@ Optional arguments:
 
 ## Usage (Sequence)
 ```bash
-$ python main.py -i test.mp4 -a -r 50
+$ python main.py -i 'image/*.png' -a -r 50
 ```
 
 ```yaml
@@ -34,3 +35,4 @@ Optional arguments:
 -a, --assemble          prepares the script for an image sequence
 -r, --fps               set the fps of the resultant GIF
 ```
+> WARNING: Make sure your file path is quoted, as asterisks are part of the shell's syntax
