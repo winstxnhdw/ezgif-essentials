@@ -25,6 +25,8 @@ Optional arguments:
 ```
 
 ## Usage (Sequence)
+> WARNING: Make sure your file path is quoted, as asterisks are part of the shell's syntax
+
 ```bash
 $ python main.py -i 'image/*.png' -a -r 50
 ```
@@ -35,4 +37,3 @@ Optional arguments:
 -a, --assemble          prepares the script for an image sequence
 -r, --fps               set the fps of the resultant GIF
 ```
-> WARNING: Make sure your file path is quoted, as asterisks are part of the shell's syntax
