@@ -8,11 +8,14 @@ class ConvertSequence(Convert):
 
         super().__init__(input_path)
 
+        if '*' not in self.input_path:
+            raise Exception("Input is not an image sequence. If you are on Linux, make sure that you have 'quoted' your file path.")
+
         self.sequence_fps = sequence_fps
         self.output_path = 'sequence_converted.gif'
 
     def to_gif(self):
-
+        
         (
             ffmpeg
             .input(self.input_path, pattern_type='glob', framerate=self.sequence_fps)

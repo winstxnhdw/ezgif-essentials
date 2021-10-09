@@ -87,3 +87,5 @@ class ConvertVideo(Convert):
         print(f"Duration:       {output_duration}s <- {input_duration}s")
         print(f"Resolution:     {output_resolution} <- {input_resolution}")
         print(f"Frames:         {output_frames} <- {input_frames}")
+        print(f"Optimisation:   Level {self.optimisation_level}")
+        print(f"Compression:    {self.compression_level} allowable artefacts")
