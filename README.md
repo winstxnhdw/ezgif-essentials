@@ -31,7 +31,7 @@ Optional arguments:
 ```
 
 ## Usage (Sequence)
-> WARNING: If you have 1000 images, your preceding frames should have the appropriate amount of leading zeros. Read more about it [here](https://unix.stackexchange.com/questions/77016/ffmpeg-pattern-type-glob-not-loading-files-in-correct-order).
+> WARNING: Please name your images with the appropriate amount of leading zeros. Read more about it [here](https://unix.stackexchange.com/questions/77016/ffmpeg-pattern-type-glob-not-loading-files-in-correct-order).
 
 ```bash
 $ python main.py -i 'image/*.png' -a -r 50
