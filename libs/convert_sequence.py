@@ -16,7 +16,6 @@ class ConvertSequence(Convert):
         self.output_path = 'sequence_converted.gif'
         self.output_palette = f"{self.output_path.split('.')[0]}_palette.png"
 
-
     def generate_palette(self, reserve_transparency='False'):
 
         (
