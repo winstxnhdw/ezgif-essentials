@@ -34,7 +34,7 @@ Optional arguments:
 > WARNING: Please name your images with the appropriate amount of leading zeros. Read more about it [here](https://unix.stackexchange.com/questions/77016/ffmpeg-pattern-type-glob-not-loading-files-in-correct-order).
 
 ```bash
-$ python main.py -i 'image/*.png' -a -r 50
+$ python main.py -i 'image/*.png' -a -r 50 -z 3
 ```
 
 ```yaml
