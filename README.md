@@ -40,9 +40,11 @@ $ python main.py -i 'image/*.png' -a -r 50
 ```
 
 ```yaml
+Required arguments:
+-a, --assemble          prepares the script for an image sequence
+
 Optional arguments:
 -h, --help              show this help message and exit
--a, --assemble          prepares the script for an image sequence
 -r, --fps               set the fps of the resultant GIF
 -z, --optimise          optimise GIF file size with zero quality penalty
 -l, --lossy             applies compression by allowing some artefacts
