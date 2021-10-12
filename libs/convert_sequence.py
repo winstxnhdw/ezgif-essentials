@@ -33,7 +33,7 @@ class ConvertSequence(Convert):
         
         (
             ffmpeg.filter([
-                ffmpeg.input(self.input_path, pattern_type='glob', framerate=self.sequence_fps),
+                ffmpeg.input(self.input_path, pattern_type='glob', framerate=self.sequence_fps if self.sequence_fps <= 50 else 50),
                 ffmpeg.input(self.output_palette)],
                 filter_name='paletteuse',
                 dither='none'
