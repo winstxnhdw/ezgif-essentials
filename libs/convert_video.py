@@ -1,6 +1,5 @@
 import ffmpeg
 import os
-import math as m
 
 from libs.convert import Convert
 
@@ -17,22 +16,8 @@ class ConvertVideo(Convert):
             print('[ERROR] ' + str(e.stderr).split("\\n")[-2])
             exit()
 
-        self.output_palette = f"{self.output_path.split('.')[0]}_palette.png"
         self.input_video_info = next(stream for stream in input_probe['streams'] if stream['codec_type'] == 'video')
         self.input_fps = self.get_video_fps(self.input_video_info)
-
-    def get_video_fps(self, video_info):
-
-        avg_frame_rate = video_info['avg_frame_rate'].split('/')
-        return int(m.floor(float(avg_frame_rate[0])/float(avg_frame_rate[1])))
-
-    def get_video_resolution(self, video_info):
-
-        return f"{video_info['width']}x{video_info['height']}"
-
-    def get_video_duration(self, video_info):
-
-        return round(float(video_info['duration']), 2)
 
     def generate_palette(self, reserve_transparency='False'):
 
@@ -60,10 +45,6 @@ class ConvertVideo(Convert):
             .overwrite_output()
             .run()
         )
-
-    def clear_temp_files(self):
-
-        os.remove(self.output_palette)
 
     def print_output_info(self):
 

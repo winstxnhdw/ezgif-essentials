@@ -21,13 +21,17 @@ def main(args):
 
     else:
         convert_sequence = ConvertSequence(args.input, args.fps)
+        convert_sequence.generate_palette(args.transparent)
         convert_sequence.to_gif()
+        convert_sequence.clear_temp_files()
 
         if args.optimise:
             convert_sequence.optimize_gif(args.optimise)
 
         if args.lossy:
             convert_sequence.compress_gif(args.lossy)
+
+        convert_sequence.print_output_info()
 
 def parse_args():
 

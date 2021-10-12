@@ -7,8 +7,6 @@ Want to generate GIFs of the highest quality? Tired of having too many unecessar
 |-------------------------------------------------|------------------------------------------|
 |![](resources/converted-by-ezgif-essentials.gif) | ![](resources/converted-by-ezgif.com.gif)|
 
-> Comparisons are both generated with their highest respective settings. There isn't even a competition. The answer is obvious.
-
 ## Installation
 ```bash
 $ git clone https://github.com/winstxnhdw/ezgif-essentials.git
@@ -33,7 +31,7 @@ Optional arguments:
 ```
 
 ## Usage (Sequence)
-> WARNING: Make sure your file path is quoted. Asterisks are part of the shell's syntax
+> WARNING: If you have 1000 images, your preceding frames should have the appropriate amount of leading zeros. Read more about it [here](https://unix.stackexchange.com/questions/77016/ffmpeg-pattern-type-glob-not-loading-files-in-correct-order).
 
 ```bash
 $ python main.py -i 'image/*.png' -a -r 50
@@ -48,4 +46,5 @@ Optional arguments:
 -r, --fps               set the fps of the resultant GIF
 -z, --optimise          optimise GIF file size with zero quality penalty
 -l, --lossy             applies compression by allowing some artefacts
+-w, --transparent       enables transparency
 ```
