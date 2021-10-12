@@ -48,3 +48,10 @@ Optional arguments:
 -l, --lossy             applies compression by allowing some artefacts
 -w, --transparent       enables transparency
 ```
+
+## Frequently Asked Questions
+1. The output GIF has a lower FPS than the input video when I use the optimise flag.
+> This is intended. Gifsicle optimises the GIF by removing unnecessary frames that do not contribute to the visual appearance of the animation.
+
+2. Why can't I set a specific FPS parameter for video-to-GIF conversions?
+> The output GIF will always have the same FPS as the input video. However, if your input video is above 50 FPS, the output will be capped to 50 FPS. This is because frame rates between 50 to 100 FPS are not supported by the standard [GIF89a specification](https://www.w3.org/Graphics/GIF/spec-gif89a.txt).
