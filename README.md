@@ -10,7 +10,7 @@ Want to generate GIFs of the highest quality? Tired of having too many unecessar
 ## Installation
 ```bash
 $ git clone https://github.com/winstxnhdw/ezgif-essentials.git
-$ pip install -r requirements.txt
+$ pip install ffmpeg-python 
 $ sudo apt install gifsicle
 $ python main.py -h
 ```
