@@ -3,35 +3,29 @@ import argparse
 from libs.convert_video import ConvertVideo
 from libs.convert_sequence import ConvertSequence
 
+def generate_gif(convert, args):
+
+        convert.generate_palette(args.transparent)
+        convert.to_gif()
+        convert.clear_temp_files()
+
+        if args.optimise:
+            convert.optimize_gif(args.optimise)
+
+        if args.lossy:
+            convert.compress_gif(args.lossy)
+
+        convert.print_output_info()
+
 def main(args):
 
     if not args.assemble:
         convert_video = ConvertVideo(args.input)
-        convert_video.generate_palette(args.transparent)
-        convert_video.to_gif()
-        convert_video.clear_temp_files()
-
-        if args.optimise:
-            convert_video.optimize_gif(args.optimise)
-
-        if args.lossy:
-            convert_video.compress_gif(args.lossy)
-
-        convert_video.print_output_info()
+        generate_gif(convert_video, args)
 
     else:
         convert_sequence = ConvertSequence(args.input, args.fps)
-        convert_sequence.generate_palette(args.transparent)
-        convert_sequence.to_gif()
-        convert_sequence.clear_temp_files()
-
-        if args.optimise:
-            convert_sequence.optimize_gif(args.optimise)
-
-        if args.lossy:
-            convert_sequence.compress_gif(args.lossy)
-
-        convert_sequence.print_output_info()
+        generate_gif(convert_sequence, args)
 
 def parse_args():
 
