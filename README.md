@@ -8,7 +8,9 @@ Want to generate GIFs of the highest quality? Tired of having too many unecessar
 
 > Comparisons are both generated with their highest respective settings. There isn't even a competition. The answer is obvious.
 
-## Installation
+## Installation (Linux)
+
+> Currently, there's no way to use `ezgif-essentials` on Windows
 
 ```bash
 git clone https://github.com/winstxnhdw/ezgif-essentials.git
