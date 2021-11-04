@@ -18,46 +18,24 @@ class ConvertSequence(Convert):
 
     def generate_palette(self, reserve_transparency='False'):
 
-        (
-            ffmpeg
-            .input(self.input_path, pattern_type='glob')
-            .filter(filter_name='palettegen', reserve_transparent=str(reserve_transparency))
-            .output(self.output_palette)
-            .overwrite_output()
-            .run()
-        )
-
-        self.transparency = reserve_transparency
+        stream = ffmpeg.input(self.input_path, pattern_type='glob')
+        super().generate_palette(stream, reserve_transparency)
 
     def to_gif(self):
         
-        (
-            ffmpeg.filter([
-                ffmpeg.input(self.input_path, pattern_type='glob', framerate=self.sequence_fps if self.sequence_fps <= 50 else 50),
-                ffmpeg.input(self.output_palette)],
-                filter_name='paletteuse',
-                dither='none'
+        stream = ffmpeg.filter([
+                 ffmpeg.input(self.input_path, pattern_type='glob', framerate=self.sequence_fps if self.sequence_fps <= 50 else 50),
+                 ffmpeg.input(self.output_palette)],
+                 filter_name='paletteuse',
+                 dither='none'
             )
-            .output(self.output_path)
-            .overwrite_output()
-            .run()
-        )
+
+        super().to_gif(stream)
 
     def print_output_info(self):
 
-        os.system('cls' if os.name=='nt' else 'clear')
+        output_fps, output_duration, output_resolution, output_frames = super().print_output_info()
 
-        output_probe = ffmpeg.probe(self.output_path)
-        output_video_info = next(stream for stream in output_probe['streams'] if stream['codec_type'] == 'video')
-
-        output_fps = self.get_video_fps(output_video_info)
-        output_duration = self.get_video_duration(output_video_info)
-        output_resolution = self.get_video_resolution(output_video_info)
-        output_frames = output_video_info['nb_frames']
-
-        title = "VIDEO HAS BEEN SUCCESSFULLY CONVERTED"
-        print(title)
-        print("="*len(title))
         print(f"Name:           {self.output_path}")
         print(f"FPS:            {output_fps}")
         print(f"Duration:       {output_duration}s")

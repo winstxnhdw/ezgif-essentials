@@ -21,50 +21,28 @@ class ConvertVideo(Convert):
 
     def generate_palette(self, reserve_transparency='False'):
 
-        (
-            ffmpeg
-            .input(self.input_path)
-            .filter(filter_name='palettegen', reserve_transparent=str(reserve_transparency))
-            .output(self.output_palette)
-            .overwrite_output()
-            .run()
-        )
-
-        self.transparency = reserve_transparency
+        stream = ffmpeg.input(self.input_path)
+        super().generate_palette(stream, reserve_transparency)
 
     def to_gif(self):
 
-        (
-            ffmpeg.filter([
-                ffmpeg.input(self.input_path, r=self.input_fps if self.input_fps <= 50 else 50),
-                ffmpeg.input(self.output_palette)],
-                filter_name='paletteuse',
-                dither='none'
+        stream = ffmpeg.filter([
+                 ffmpeg.input(self.input_path, r=self.input_fps if self.input_fps <= 50 else 50),
+                 ffmpeg.input(self.output_palette)],
+                 filter_name='paletteuse',
+                 dither='none'
             )
-            .output(self.output_path)
-            .overwrite_output()
-            .run()
-        )
+
+        super().to_gif(stream)
 
     def print_output_info(self):
 
-        os.system('cls' if os.name=='nt' else 'clear')
-
-        output_probe = ffmpeg.probe(self.output_path)
-        output_video_info = next(stream for stream in output_probe['streams'] if stream['codec_type'] == 'video')
-
-        output_fps = self.get_video_fps(output_video_info)
-        output_duration = self.get_video_duration(output_video_info)
-        output_resolution = self.get_video_resolution(output_video_info)
-        output_frames = output_video_info['nb_frames']
+        output_fps, output_duration, output_resolution, output_frames = super().print_output_info()
 
         input_duration = self.get_video_duration(self.input_video_info)
         input_resolution = self.get_video_resolution(self.input_video_info)
         input_frames = self.input_video_info['nb_frames']
 
-        title = "VIDEO HAS BEEN SUCCESSFULLY CONVERTED"
-        print(title)
-        print("="*len(title))
         print(f"Name:           {self.output_path} <- {self.input_path}")
         print(f"FPS:            {output_fps} <- {self.input_fps}")
         print(f"Duration:       {output_duration}s <- {input_duration}s")

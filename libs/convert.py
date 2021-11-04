@@ -1,5 +1,6 @@
-import subprocess
 import os
+import subprocess
+import ffmpeg
 import math as m
 
 class Convert:
@@ -13,6 +14,21 @@ class Convert:
         self.transparency = None
         self.optimisation_level = 0
         self.compression_level = 0
+
+    def generate_palette(self, stream, reserve_transparency):
+
+        stream = ffmpeg.filter(stream, filter_name='palettegen', reserve_transparent=str(reserve_transparency))
+        stream = ffmpeg.output(stream, self.output_palette)
+        stream = ffmpeg.overwrite_output(stream)
+        ffmpeg.run(stream)
+
+        self.transparency = reserve_transparency
+
+    def to_gif(self, stream):
+
+        stream = ffmpeg.output(stream, self.output_path)
+        stream = ffmpeg.overwrite_output(stream)
+        ffmpeg.run(stream)
 
     def get_video_fps(self, video_info):
 
@@ -40,3 +56,21 @@ class Convert:
 
         subprocess.run(['gifsicle', self.output_path, f'--lossy={lossy}', '-o', self.output_path])
         self.compression_level = lossy
+
+    def print_output_info(self):
+
+        os.system('cls' if os.name=='nt' else 'clear')
+
+        output_probe = ffmpeg.probe(self.output_path)
+        output_video_info = next(stream for stream in output_probe['streams'] if stream['codec_type'] == 'video')
+
+        output_fps = self.get_video_fps(output_video_info)
+        output_duration = self.get_video_duration(output_video_info)
+        output_resolution = self.get_video_resolution(output_video_info)
+        output_frames = output_video_info['nb_frames']
+
+        title = "VIDEO HAS BEEN SUCCESSFULLY CONVERTED"
+        print(title)
+        print("="*len(title))
+        
+        return output_fps, output_duration, output_resolution, output_frames
