@@ -1,7 +1,6 @@
 import os
 import subprocess
 import ffmpeg
-import math as m
 
 class Convert:
 
