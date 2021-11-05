@@ -31,8 +31,7 @@ class Convert:
 
     def get_video_fps(self, video_info):
 
-        avg_frame_rate = video_info['avg_frame_rate'].split('/')
-        return int(float(avg_frame_rate[0])/float(avg_frame_rate[1]))
+        return int(eval(video_info['avg_frame_rate']))
 
     def get_video_resolution(self, video_info):
 
