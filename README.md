@@ -12,10 +12,27 @@ Want to generate GIFs of the highest quality? Tired of having too many unecessar
 
 > Currently, there's no way to use `ezgif-essentials` on Windows
 
+Clone this repository
+
 ```bash
 git clone https://github.com/winstxnhdw/ezgif-essentials.git
+```
+
+Install the `ffmpeg-python` module
+
+```bash
 pip install ffmpeg-python 
+```
+
+Install `gifsicle`
+
+```bash
 sudo apt install gifsicle
+```
+
+Test the script
+
+```bash
 python main.py -h
 ```
 
