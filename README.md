@@ -38,7 +38,7 @@ python main.py -h
 
 ## Usage (Video)
 
-> Transparency is disabled by default to allow for more colour palettes when generating more complex GIFs 
+> Transparency is disabled by default to allow for more colour palettes when generating more complex GIFs
 
 ```bash
 python main.py -i test.mp4 -z 3
