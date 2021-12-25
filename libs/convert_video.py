@@ -13,7 +13,7 @@ class ConvertVideo(Convert):
             input_probe = ffmpeg.probe(input_path)
 
         except ffmpeg.Error as e:
-            print(f"[ERROR] {str(e.stderr).split('\\n')[-2]}")
+            print("[ERROR] {}".format(str(e.stderr).split('\\n')[-2]))
             exit()
 
         self.input_video_info = next(stream for stream in input_probe['streams'] if stream['codec_type'] == 'video')
