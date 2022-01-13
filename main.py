@@ -17,7 +17,9 @@ def generate_gif(convert, args):
 
         convert.print_output_info()
 
-def main(args):
+def main():
+
+    args, _ = parse_args()
 
     if not args.assemble:
         convert_video = ConvertVideo(args.input)
@@ -42,5 +44,4 @@ def parse_args():
     return parser.parse_known_args()
 
 if __name__ == '__main__':
-    args, _ = parse_args()
-    main(args)
+    main()
