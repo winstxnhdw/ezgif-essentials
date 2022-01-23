@@ -28,7 +28,7 @@ class ConvertSequence(Convert):
                  ffmpeg.input(self.output_palette)],
                  filter_name='paletteuse',
                  dither='none'
-            )
+        )
 
         super().to_gif(stream)
 
