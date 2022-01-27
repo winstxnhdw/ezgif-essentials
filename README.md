@@ -5,14 +5,18 @@ Want to generate GIFs of the highest quality? Tired of having too many unecessar
 <table width="100%">
   <tr>
     <th>Converted by ezgif-essentials</th>
+  </tr>
+  <tr>
+    <td width="100%">
+      <img src="resources/converted-by-ezgif-essentials.gif" width="100%"/>
+    </td>
+  </tr>
+  <tr>
     <th>Converted by ezgif.com</th>
   </tr>
   <tr>
-    <td width="50%">
-      <img src="resources/converted-by-ezgif-essentials.gif"/>
-    </td>
-    <td width="50%">
-      <img src="resources/converted-by-ezgif.com.gif"/>
+    <td width="100%">
+      <img src="resources/converted-by-ezgif.com.gif" width="100%"/>
     </td>
   </tr>
 </table>
