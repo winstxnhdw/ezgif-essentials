@@ -5,10 +5,11 @@ import ffmpeg
 class Convert:
 
     def __init__(self, input_path: str):
-
+        
+        output_name = self.input_path.split('.')[0]
         self.input_path = input_path
-        self.output_path = f"{self.input_path.split('.')[0]}_converted.gif"
-        self.output_palette = f"{self.output_path.split('.')[0]}_palette.png"
+        self.output_path = f"{output_name}_converted.gif"
+        self.output_palette = f"{output_name}_palette.png"
 
         self.transparency = None
         self.optimisation_level = 0
