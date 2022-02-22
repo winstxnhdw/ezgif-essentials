@@ -10,14 +10,14 @@ class ConvertSequence(Convert):
         super().__init__(input_path)
 
         if '*' not in self.input_path:
-            raise Exception("Input is not an image sequence. If you are on Linux, make sure that you have 'quoted' your file path.")
+            raise Exception("Input is not an image sequence. If you are on Linux, make sure that you have contained your file path with quotations. For example, 'image/*.png'")
         
         output_name = 'sequence_converted'
         self.sequence_fps = sequence_fps
         self.output_path = f'{output_name}.gif'
         self.output_palette = f"{output_name}_palette.png"
 
-    def generate_palette(self, reserve_transparency='False'):
+    def generate_palette(self, reserve_transparenc:y str='False'):
 
         stream = ffmpeg.input(self.input_path, pattern_type='glob')
         super().generate_palette(stream, reserve_transparency)

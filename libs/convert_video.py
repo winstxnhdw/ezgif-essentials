@@ -14,12 +14,12 @@ class ConvertVideo(Convert):
 
         except ffmpeg.Error as e:
             print("[ERROR] {}".format(str(e.stderr).split('\\n')[-2]))
-            exit()
+            raise
 
         self.input_video_info = next(stream for stream in input_probe['streams'] if stream['codec_type'] == 'video')
         self.input_fps = self.get_video_fps(self.input_video_info)
 
-    def generate_palette(self, reserve_transparency='False'):
+    def generate_palette(self, reserve_transparency: str='False'):
 
         stream = ffmpeg.input(self.input_path)
         super().generate_palette(stream, reserve_transparency)
