@@ -11,10 +11,11 @@ class ConvertSequence(Convert):
 
         if '*' not in self.input_path:
             raise Exception("Input is not an image sequence. If you are on Linux, make sure that you have 'quoted' your file path.")
-
+        
+        output_name = 'sequence_converted'
         self.sequence_fps = sequence_fps
-        self.output_path = 'sequence_converted.gif'
-        self.output_palette = f"{self.output_path.split('.')[0]}_palette.png"
+        self.output_path = f'{output_name}.gif'
+        self.output_palette = f"{output_name}_palette.png"
 
     def generate_palette(self, reserve_transparency='False'):
 
