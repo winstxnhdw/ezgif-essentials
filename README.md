@@ -62,8 +62,8 @@ python main.py -i test.mp4 -z 3
 ```yaml
 Optional arguments:
 -h, --help              show this help message and exit
--z, --optimise          optimise GIF file size with zero quality penalty
--l, --lossy             applies compression by allowing some artefacts
+-z, --optimise          optimise GIF file size with zero quality penalty (1 - 3)
+-l, --lossy             number of artefacts allowed for compression
 -w, --transparent       enables transparency
 ```
 
@@ -82,8 +82,8 @@ Required arguments:
 Optional arguments:
 -h, --help              show this help message and exit
 -r, --fps               set the fps of the resultant GIF
--z, --optimise          optimise GIF file size with zero quality penalty
--l, --lossy             applies compression by allowing some artefacts
+-z, --optimise          optimise GIF file size with zero quality penalty (1 - 3)
+-l, --lossy             number of artefacts allowed for compression
 -w, --transparent       enables transparency
 ```
 

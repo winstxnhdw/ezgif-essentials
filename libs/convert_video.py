@@ -1,5 +1,4 @@
 import ffmpeg
-import os
 
 from libs.convert import Convert
 
@@ -19,7 +18,7 @@ class ConvertVideo(Convert):
         self.input_video_info = next(stream for stream in input_probe['streams'] if stream['codec_type'] == 'video')
         self.input_fps = self.get_video_fps(self.input_video_info)
 
-    def generate_palette(self, reserve_transparency: str='False'):
+    def generate_palette(self, reserve_transparency: bool=False):
 
         stream = ffmpeg.input(self.input_path)
         super().generate_palette(stream, reserve_transparency)

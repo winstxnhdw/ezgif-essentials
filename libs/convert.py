@@ -6,7 +6,7 @@ class Convert:
 
     def __init__(self, input_path: str):
         
-        output_name = self.input_path.split('.')[0]
+        output_name = input_path.split('.')[0]
         self.input_path = input_path
         self.output_path = f"{output_name}_converted.gif"
         self.output_palette = f"{output_name}_palette.png"
@@ -15,7 +15,7 @@ class Convert:
         self.optimisation_level = 0
         self.compression_level = 0
 
-    def generate_palette(self, stream, reserve_transparency):
+    def generate_palette(self, stream, reserve_transparency: bool):
 
         stream = ffmpeg.filter(stream, filter_name='palettegen', reserve_transparent=str(reserve_transparency))
         stream = ffmpeg.output(stream, self.output_palette)
@@ -30,15 +30,15 @@ class Convert:
         stream = ffmpeg.overwrite_output(stream)
         ffmpeg.run(stream)
 
-    def get_video_fps(self, video_info):
+    def get_video_fps(self, video_info: dict) -> int:
 
         return int(eval(video_info['avg_frame_rate']))
 
-    def get_video_resolution(self, video_info):
+    def get_video_resolution(self, video_info: dict) -> str:
 
         return f"{video_info['width']}x{video_info['height']}"
 
-    def get_video_duration(self, video_info):
+    def get_video_duration(self, video_info: dict) -> float:
 
         return round(float(video_info['duration']), 2)
 
@@ -46,17 +46,17 @@ class Convert:
 
         os.remove(self.output_palette)
 
-    def optimize_gif(self, optimisation_level):
+    def optimize_gif(self, optimisation_level: int):
 
         subprocess.run(['gifsicle', f'-O{optimisation_level}', self.output_path, '-o', self.output_path])
         self.optimisation_level = optimisation_level
 
-    def compress_gif(self, lossy):
+    def compress_gif(self, lossy: int):
 
         subprocess.run(['gifsicle', self.output_path, f'--lossy={lossy}', '-o', self.output_path])
         self.compression_level = lossy
 
-    def print_output_info(self):
+    def print_output_info(self) -> tuple[int, float, str, int]:
 
         os.system('cls' if os.name=='nt' else 'clear')
 

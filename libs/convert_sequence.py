@@ -1,5 +1,4 @@
 import ffmpeg
-import os
 
 from libs.convert import Convert
 
@@ -17,7 +16,7 @@ class ConvertSequence(Convert):
         self.output_path = f'{output_name}.gif'
         self.output_palette = f"{output_name}_palette.png"
 
-    def generate_palette(self, reserve_transparency: str='False'):
+    def generate_palette(self, reserve_transparency: bool=False):
 
         stream = ffmpeg.input(self.input_path, pattern_type='glob')
         super().generate_palette(stream, reserve_transparency)

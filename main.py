@@ -1,9 +1,9 @@
-import argparse
 
+from argparse import ArgumentParser, Namespace
 from libs.convert_video import ConvertVideo
 from libs.convert_sequence import ConvertSequence
 
-def generate_gif(convert, args):
+def generate_gif(convert: ConvertSequence | ConvertVideo, args: Namespace):
 
         convert.generate_palette(args.transparent)
         convert.to_gif()
@@ -29,9 +29,9 @@ def main():
         convert_sequence = ConvertSequence(args.input, args.fps)
         generate_gif(convert_sequence, args)
 
-def parse_args():
+def parse_args() -> tuple[Namespace, list]:
 
-    parser = argparse.ArgumentParser(description='Converts video/sequence to GIF')
+    parser = ArgumentParser(description='Converts video/sequence to GIF')
     parser.add_argument('-i', '--input', type=str, metavar='', help='Input file path', required=True)
 
     parser.add_argument('-w', '--transparent', action='store_true', help='Enable transparency', required=False)
