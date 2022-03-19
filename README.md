@@ -95,4 +95,4 @@ Optional arguments:
 
 2. Why can't I set a specific FPS parameter for video-to-GIF conversions?
 
-> The output GIF will always have the same FPS as the input video. However, if your input video is above 50 FPS, the frame rate of the resulting GIF will be capped to 50. This is because frame rates between 50 and 100 are not supported by the standard [GIF89a specification](https://www.w3.org/Graphics/GIF/spec-gif89a.txt). Trust me, I've worked with videos for more than 10 years. I know more or less what will make the highest quality GIF.
+> The output GIF will always have the same FPS as the input video. However, if your input video is above 50 FPS, the frame rate of the resulting GIF will be capped to 50. This is because frame rates between 50 and 100 are not supported by the standard [GIF89a specification](https://www.w3.org/Graphics/GIF/spec-gif89a.txt).
