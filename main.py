@@ -5,19 +5,19 @@ from libs.convert_sequence import ConvertSequence
 
 def generate_gif(convert: ConvertSequence | ConvertVideo, args: Namespace):
 
-        (
-            convert.generate_palette()
-                   .to_gif()
-                   .clear_temp_files()
-        )
+    (
+        convert.generate_palette()
+                .to_gif()
+                .clear_temp_files()
+    )
 
-        if args.optimise:
-            convert.optimize_gif(args.optimise)
+    if args.optimise:
+        convert.optimize_gif(args.optimise)
 
-        if args.lossy:
-            convert.compress_gif(args.lossy)
+    if args.lossy:
+        convert.compress_gif(args.lossy)
 
-        convert.print_output_info()
+    convert.print_output_info()
 
 def main():
 
