@@ -4,31 +4,33 @@ import ffmpeg
 
 class Convert:
 
-    def __init__(self, input_path: str):
+    def __init__(self, input_path: str, transparency: bool):
         
         output_name = input_path.split('.')[0]
         self.input_path = input_path
+        self.transparency = transparency
         self.output_path = f"{output_name}_converted.gif"
         self.output_palette = f"{output_name}_palette.png"
 
-        self.transparency = None
         self.optimisation_level = 0
         self.compression_level = 0
 
-    def generate_palette(self, stream, reserve_transparency: bool):
+    def generate_palette(self, stream):
 
-        stream = ffmpeg.filter(stream, filter_name='palettegen', reserve_transparent=str(reserve_transparency))
+        stream = ffmpeg.filter(stream, filter_name='palettegen', reserve_transparent=str(self.transparency))
         stream = ffmpeg.output(stream, self.output_palette)
         stream = ffmpeg.overwrite_output(stream)
         ffmpeg.run(stream)
 
-        self.transparency = reserve_transparency
+        return self
 
     def to_gif(self, stream):
 
         stream = ffmpeg.output(stream, self.output_path)
         stream = ffmpeg.overwrite_output(stream)
         ffmpeg.run(stream)
+
+        return self
 
     def get_video_fps(self, video_info: dict) -> int:
 

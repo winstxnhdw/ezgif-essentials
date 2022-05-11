@@ -4,9 +4,9 @@ from libs.convert import Convert
 
 class ConvertVideo(Convert):
 
-    def __init__(self, input_path: str):
+    def __init__(self, input_path: str, transparency: bool):
 
-        super().__init__(input_path)
+        super().__init__(input_path, transparency)
         
         try:
             input_probe = ffmpeg.probe(input_path)
@@ -18,10 +18,10 @@ class ConvertVideo(Convert):
         self.input_video_info = next(stream for stream in input_probe['streams'] if stream['codec_type'] == 'video')
         self.input_fps = self.get_video_fps(self.input_video_info)
 
-    def generate_palette(self, reserve_transparency: bool=False):
+    def generate_palette(self):
 
         stream = ffmpeg.input(self.input_path)
-        super().generate_palette(stream, reserve_transparency)
+        return super().generate_palette(stream)
 
     def to_gif(self):
 
@@ -32,7 +32,7 @@ class ConvertVideo(Convert):
                  dither='none'
             )
 
-        super().to_gif(stream)
+        return super().to_gif(stream)
 
     def print_output_info(self):
 

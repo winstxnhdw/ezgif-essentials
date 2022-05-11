@@ -5,9 +5,7 @@ from libs.convert_sequence import ConvertSequence
 
 def generate_gif(convert: ConvertSequence | ConvertVideo, args: Namespace):
 
-        convert.generate_palette(args.transparent)
-        convert.to_gif()
-        convert.clear_temp_files()
+        convert.generate_palette().to_gif().clear_temp_files()
 
         if args.optimise:
             convert.optimize_gif(args.optimise)
@@ -22,12 +20,12 @@ def main():
     args, _ = parse_args()
 
     if not args.assemble:
-        convert_video = ConvertVideo(args.input)
-        generate_gif(convert_video, args)
+        convert = ConvertVideo(args.input, args.transparent)
 
     else:
-        convert_sequence = ConvertSequence(args.input, args.fps)
-        generate_gif(convert_sequence, args)
+        convert = ConvertSequence(args.input, args.transparent, args.fps)
+
+    generate_gif(convert, args)
 
 def parse_args() -> tuple[Namespace, list]:
 

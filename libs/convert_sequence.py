@@ -2,24 +2,31 @@ import ffmpeg
 
 from libs.convert import Convert
 
+class ImageNotSequence(Exception):
+    
+    def __init__(self):
+
+        error_message = "Input is not an image sequence. If you are on Linux, make sure that you have contained your file path with quotations. For example, 'image/*.png'"
+        super().__init__(error_message)
+
 class ConvertSequence(Convert):
 
-    def __init__(self, input_path: str, sequence_fps: int):
+    def __init__(self, input_path: str, transparency: bool, sequence_fps: int):
 
-        super().__init__(input_path)
+        super().__init__(input_path, transparency)
 
         if '*' not in self.input_path:
-            raise Exception("Input is not an image sequence. If you are on Linux, make sure that you have contained your file path with quotations. For example, 'image/*.png'")
+            raise ImageNotSequence
         
         output_name = 'sequence_converted'
         self.sequence_fps = sequence_fps
         self.output_path = f'{output_name}.gif'
         self.output_palette = f"{output_name}_palette.png"
 
-    def generate_palette(self, reserve_transparency: bool=False):
+    def generate_palette(self):
 
         stream = ffmpeg.input(self.input_path, pattern_type='glob')
-        super().generate_palette(stream, reserve_transparency)
+        return super().generate_palette(stream)
 
     def to_gif(self):
         
@@ -28,9 +35,9 @@ class ConvertSequence(Convert):
                  ffmpeg.input(self.output_palette)],
                  filter_name='paletteuse',
                  dither='none'
-        )
+            )
 
-        super().to_gif(stream)
+        return super().to_gif(stream)
 
     def print_output_info(self):
 
