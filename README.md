@@ -99,6 +99,4 @@ Optional arguments:
 
 3. Why is the `lossy` argument capped at 200?
 
-> According to the author, Kornel Lesiński: 
-> > "It works best when only little loss is introduced, and due to limitation of the compression algorithm very high loss levels won't give as much gain."
-> Read more [here](https://kornel.ski/lossygif)
+> According to the author, Kornel Lesiński: "It works best when only little loss is introduced, and due to limitation of the compression algorithm very high loss levels won't give as much gain." Read more [here](https://kornel.ski/lossygif).
