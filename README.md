@@ -63,7 +63,7 @@ python main.py -i test.mp4 -z 3
 Optional arguments:
 -h, --help              show this help message and exit
 -z, --optimise          optimise GIF file size with zero quality penalty (1 - 3)
--l, --lossy             number of artefacts allowed for compression
+-l, --lossy             number of artefacts allowed for compression (0 - 200)
 -w, --transparent       enables transparency
 ```
 
@@ -83,7 +83,7 @@ Optional arguments:
 -h, --help              show this help message and exit
 -r, --fps               set the fps of the resultant GIF
 -z, --optimise          optimise GIF file size with zero quality penalty (1 - 3)
--l, --lossy             number of artefacts allowed for compression
+-l, --lossy             number of artefacts allowed for compression (0 - 200)
 -w, --transparent       enables transparency
 ```
 
