@@ -96,3 +96,9 @@ Optional arguments:
 2. Why can't I set a specific FPS parameter for video-to-GIF conversions?
 
 > The output GIF will always have the same FPS as the input video. However, if your input video is above 50 FPS, the frame rate of the resulting GIF will be capped to 50. This is because frame rates between 50 and 100 are not supported by the standard [GIF89a specification](https://www.w3.org/Graphics/GIF/spec-gif89a.txt).
+
+3. Why is the `lossy` argument capped at 200?
+
+> According to the author, Kornel Lesiński: 
+> > "It works best when only little loss is introduced, and due to limitation of the compression algorithm very high loss levels won't give as much gain."
+> Read more [here](https://kornel.ski/lossygif)
