@@ -54,8 +54,8 @@ class Convert:
         self.optimisation_level = optimisation_level
 
     def compress_gif(self, lossy: int):
-
-        subprocess.run(['gifsicle', self.output_path, f'--lossy={lossy}', '-o', self.output_path])
+        
+        subprocess.run(['gifsicle', self.output_path, f'--lossy={max(min(lossy, 200), 0)}', '-o', self.output_path])
         self.compression_level = lossy
 
     def print_output_info(self) -> tuple[int, float, str, int]:
