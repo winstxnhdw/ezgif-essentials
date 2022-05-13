@@ -7,8 +7,8 @@ def generate_gif(convert: ConvertSequence | ConvertVideo, args: Namespace):
 
     (
         convert.generate_palette()
-                .to_gif()
-                .clear_temp_files()
+               .to_gif()
+               .clear_temp_files()
     )
 
     if args.optimise:
