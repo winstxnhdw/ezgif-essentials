@@ -53,7 +53,7 @@ python main.py -h
 
 ## Usage (Video)
 
-> Transparency is disabled by default to allow for more colour palettes when generating more complex GIFs
+>**Note**: Transparency is disabled by default to allow for more colour palettes when generating more complex GIFs
 
 ```bash
 python main.py -i test.mp4 -z 3
@@ -69,7 +69,7 @@ Optional arguments:
 
 ## Usage (Sequence)
 
-> WARNING: Please name your images with the appropriate amount of leading zeros. Read more about it [here](https://unix.stackexchange.com/questions/77016/ffmpeg-pattern-type-glob-not-loading-files-in-correct-order).
+>**Warning**: Please name your images with the appropriate amount of leading zeros. Read more about it [here](https://unix.stackexchange.com/questions/77016/ffmpeg-pattern-type-glob-not-loading-files-in-correct-order).
 
 ```bash
 python main.py -i 'image/*.png' -a -r 50 -z 3
