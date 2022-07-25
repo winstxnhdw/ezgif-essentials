@@ -1,9 +1,9 @@
 # ezgif-essentials
 
-Want to generate GIFs of the highest quality? Tired of having too many unecessary parameters? You also happen to be a motion graphic designer? `ezgif-essentials` is a pseudo-opinionated video/sequence to GIF CLI converter. It uses the same robust conversion pipeline as [ezGIF](https://ezgif.com/) without the frame rate limitations or involuntary compression. It is powered by [FFmpeg](https://github.com/kkroening/ffmpeg-python), [Gifsicle](https://github.com/kohler/gifsicle) and my frustration with all GIF converters.
-
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/winstxnhdw/ezgif-essentials.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/winstxnhdw/ezgif-essentials/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/winstxnhdw/ezgif-essentials.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/winstxnhdw/ezgif-essentials/context:python)
+
+Want to generate GIFs of the highest quality? Tired of having too many unecessary parameters? You also happen to be a motion graphic designer? `ezgif-essentials` is a pseudo-opinionated video/sequence to GIF CLI converter. It uses the same robust conversion pipeline as [ezGIF](https://ezgif.com/) without the frame rate limitations or involuntary compression. It is powered by [FFmpeg](https://github.com/kkroening/ffmpeg-python), [Gifsicle](https://github.com/kohler/gifsicle) and my frustration with all GIF converters.
 
 <table width="100%">
   <tr>
