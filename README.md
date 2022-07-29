@@ -36,7 +36,7 @@ Clone this repository
 git clone https://github.com/winstxnhdw/ezgif-essentials.git
 ```
 
-Install the `ffmpeg-python` module
+Install the `ffmpeg-python` and `typing-extensions` module
 
 ```bash
 pip install ffmpeg-python typing-extensions
