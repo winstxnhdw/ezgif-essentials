@@ -39,7 +39,7 @@ git clone https://github.com/winstxnhdw/ezgif-essentials.git
 Install the `ffmpeg-python` module
 
 ```bash
-pip install ffmpeg-python 
+pip install ffmpeg-python typing-extensions
 ```
 
 Install `gifsicle`
