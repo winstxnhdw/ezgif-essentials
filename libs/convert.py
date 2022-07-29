@@ -2,6 +2,8 @@ import os
 import subprocess
 import ffmpeg
 
+from typing_extensions import Self
+
 class Convert:
 
     def __init__(self, input_path: str, transparency: bool):
@@ -15,7 +17,7 @@ class Convert:
         self.optimisation_level = 0
         self.compression_level = 0
 
-    def generate_palette(self, stream):
+    def generate_palette(self, stream) -> Self:
 
         stream = ffmpeg.filter(stream, filter_name='palettegen', reserve_transparent=str(self.transparency))
         stream = ffmpeg.output(stream, self.output_palette)
@@ -24,7 +26,7 @@ class Convert:
 
         return self
 
-    def to_gif(self, stream):
+    def to_gif(self, stream) -> Self:
 
         stream = ffmpeg.output(stream, self.output_path)
         stream = ffmpeg.overwrite_output(stream)
