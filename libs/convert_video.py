@@ -1,6 +1,7 @@
 import ffmpeg
 
 from libs.convert import Convert
+from typing_extensions import Self
 
 class ConvertVideo(Convert):
 
@@ -18,12 +19,12 @@ class ConvertVideo(Convert):
         self.input_video_info = next(stream for stream in input_probe['streams'] if stream['codec_type'] == 'video')
         self.input_fps = self.get_video_fps(self.input_video_info)
 
-    def generate_palette(self):
+    def generate_palette(self) -> Self:
 
         stream = ffmpeg.input(self.input_path)
         return super().generate_palette(stream)
 
-    def to_gif(self):
+    def to_gif(self) -> Self:
 
         stream = ffmpeg.filter([
                  ffmpeg.input(self.input_path, r=self.input_fps if self.input_fps <= 50 else 50),

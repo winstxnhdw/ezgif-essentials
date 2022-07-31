@@ -1,6 +1,7 @@
 import ffmpeg
 
 from libs.convert import Convert
+from typing_extensions import Self
 
 class ImageNotSequence(Exception):
     
@@ -23,12 +24,12 @@ class ConvertSequence(Convert):
         self.output_path = f'{output_name}.gif'
         self.output_palette = f"{output_name}_palette.png"
 
-    def generate_palette(self):
+    def generate_palette(self) -> Self:
 
         stream = ffmpeg.input(self.input_path, pattern_type='glob')
         return super().generate_palette(stream)
 
-    def to_gif(self):
+    def to_gif(self) -> Self:
         
         stream = ffmpeg.filter([
                  ffmpeg.input(self.input_path, pattern_type='glob', framerate=self.sequence_fps if self.sequence_fps <= 50 else 50),

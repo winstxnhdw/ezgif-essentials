@@ -31,7 +31,7 @@ def main():
 
     generate_gif(convert, args)
 
-def parse_args() -> tuple[Namespace, list]:
+def parse_args() -> tuple[Namespace, list[str]]:
 
     parser = ArgumentParser(description='Converts video/sequence to GIF')
     parser.add_argument('-i', '--input', type=str, metavar='', help='Input file path', required=True)
