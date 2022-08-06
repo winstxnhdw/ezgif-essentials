@@ -1,7 +1,8 @@
 import ffmpeg
-
-from libs.convert import Convert
 from typing_extensions import Self
+
+from libs import Convert
+
 
 class ConvertVideo(Convert):
 
@@ -26,12 +27,14 @@ class ConvertVideo(Convert):
 
     def to_gif(self) -> Self:
 
-        stream = ffmpeg.filter([
-                 ffmpeg.input(self.input_path, r=self.input_fps if self.input_fps <= 50 else 50),
-                 ffmpeg.input(self.output_palette)],
-                 filter_name='paletteuse',
-                 dither='none'
+        stream = (
+            ffmpeg.filter([
+                ffmpeg.input(self.input_path, r=self.input_fps if self.input_fps <= 50 else 50),
+                ffmpeg.input(self.output_palette)],
+                filter_name='paletteuse',
+                dither='none'
             )
+        )
 
         return super().to_gif(stream)
 

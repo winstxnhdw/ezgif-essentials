@@ -1,7 +1,8 @@
 
 from argparse import ArgumentParser, Namespace
-from libs.convert_video import ConvertVideo
-from libs.convert_sequence import ConvertSequence
+
+from libs import ConvertSequence, ConvertVideo
+
 
 def generate_gif(convert: ConvertSequence | ConvertVideo, args: Namespace):
 

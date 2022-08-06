@@ -1,8 +1,9 @@
 import os
 import subprocess
-import ffmpeg
 
+import ffmpeg
 from typing_extensions import Self
+
 
 class Convert:
 
