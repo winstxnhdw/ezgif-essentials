@@ -5,11 +5,7 @@ from libs import Convert
 
 
 class ImageNotSequence(Exception):
-    
-    def __init__(self):
-
-        error_message = "Input is not an image sequence. If you are on Linux, make sure that you have contained your file path with quotations. For example, 'image/*.png'"
-        super().__init__(error_message)
+    """Raised when the input is not an image sequence"""
 
 class ConvertSequence(Convert):
 
@@ -18,7 +14,7 @@ class ConvertSequence(Convert):
         super().__init__(input_path, transparency)
 
         if '*' not in self.input_path:
-            raise ImageNotSequence
+            raise ImageNotSequence("Input is not an image sequence. If you are on Linux, make sure that you have contained your file path with quotations. For example, 'image/*.png'")
         
         output_name = 'sequence_converted'
         self.sequence_fps = sequence_fps
