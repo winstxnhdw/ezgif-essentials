@@ -24,10 +24,13 @@ def main():
 
     args, _ = parse_args()
 
-    generate_gif(
-        ConvertVideo(args.input, args.transparent) if args.assemble else ConvertSequence(args.input, args.fps),
-        args
-    )
+    if not args.assemble:
+        convert = ConvertVideo(args.input, args.transparent)
+
+    else:
+        convert = ConvertSequence(args.input, args.transparent, args.fps)
+
+    generate_gif(convert, args)
 
 def parse_args() -> tuple[Namespace, list[str]]:
 
