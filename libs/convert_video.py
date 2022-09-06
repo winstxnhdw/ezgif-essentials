@@ -17,7 +17,7 @@ class ConvertVideo(Convert):
             print("[ERROR] {}".format(str(e.stderr).split('\\n')[-2]))
             raise
 
-        self.input_video_info = next(stream for stream in input_probe['streams'] if stream['codec_type'] == 'video')
+        self.input_video_info = self.get_video_info(input_probe['streams'])
         self.input_fps = self.get_video_fps(self.input_video_info)
 
     def generate_palette(self) -> Self:

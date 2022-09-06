@@ -18,6 +18,9 @@ class Convert:
         self.optimisation_level = 0
         self.compression_level = 0
 
+        self.get_video_info = lambda streams: next(stream for stream in streams if stream['codec_type'] == 'video') 
+        
+
     def generate_palette(self, stream) -> Self:
 
         stream = ffmpeg.filter(stream, filter_name='palettegen', reserve_transparent=str(self.transparency))
@@ -66,7 +69,7 @@ class Convert:
         os.system('cls' if os.name=='nt' else 'clear')
 
         output_probe = ffmpeg.probe(self.output_path)
-        output_video_info = next(stream for stream in output_probe['streams'] if stream['codec_type'] == 'video')
+        output_video_info = self.get_video_info(output_probe['streams'])
 
         output_fps = self.get_video_fps(output_video_info)
         output_duration = self.get_video_duration(output_video_info)
