@@ -2,13 +2,13 @@ import os
 import subprocess
 
 import ffmpeg
-from typing_extensions import Self
+from typing import Self
 
 
 class Convert:
 
     def __init__(self, input_path: str, transparency: bool):
-        
+
         output_name = input_path.split('.')[0]
         self.input_path = input_path
         self.transparency = transparency
@@ -18,8 +18,8 @@ class Convert:
         self.optimisation_level = 0
         self.compression_level = 0
 
-        self.get_video_info = lambda streams: next(stream for stream in streams if stream['codec_type'] == 'video') 
-        
+        self.get_video_info = lambda streams: next(stream for stream in streams if stream['codec_type'] == 'video')
+
 
     def generate_palette(self, stream) -> Self:
 
@@ -60,7 +60,7 @@ class Convert:
         self.optimisation_level = optimisation_level
 
     def compress_gif(self, lossy: int):
-        
+
         subprocess.run(['gifsicle', self.output_path, f'--lossy={max(min(lossy, 200), 0)}', '-o', self.output_path])
         self.compression_level = lossy
 
@@ -79,5 +79,5 @@ class Convert:
         title = "VIDEO HAS BEEN SUCCESSFULLY CONVERTED"
         print(title)
         print("="*len(title))
-        
+
         return output_fps, output_duration, output_resolution, output_frames

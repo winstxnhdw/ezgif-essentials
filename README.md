@@ -23,29 +23,33 @@ Want to generate GIFs of the highest quality? Tired of having too many unecessar
 
 > Comparisons are both generated with their highest respective settings. There isn't even a competition. The answer is obvious.
 
+## Requirements
+
+- Python 3.11
+
 ## Installation (Debian-based)
 
-> Currently, there's no way to use `ezgif-essentials` on Windows
+> Currently, there's no way to use `ezgif-essentials` on Windows without WSL
 
-Clone this repository
+Clone this repository.
 
 ```bash
 git clone https://github.com/winstxnhdw/ezgif-essentials.git
 ```
 
-Install the `ffmpeg-python` and `typing-extensions` module
+Install the `ffmpeg-python` module.
 
 ```bash
-pip install ffmpeg-python typing-extensions
+pip install ffmpeg-python
 ```
 
-Install `gifsicle`
+Install `gifsicle`.
 
 ```bash
 sudo apt install gifsicle
 ```
 
-Test the script
+Test the script.
 
 ```bash
 python main.py -h
@@ -61,10 +65,10 @@ python main.py -i test.mp4 -z 3
 
 ```yaml
 Optional arguments:
--h, --help              show this help message and exit
--z, --optimise          optimise GIF file size with zero quality penalty (1 - 3)
--l, --lossy             number of artefacts allowed for compression (0 - 200)
--w, --transparent       enables transparency
+  -h, --help              show this help message and exit
+  -z, --optimise          optimise GIF file size with zero quality penalty (1 - 3)
+  -l, --lossy             number of artefacts allowed for compression (0 - 200)
+  -w, --transparent       enables transparency
 ```
 
 ## Usage (Sequence)
@@ -77,14 +81,14 @@ python main.py -i 'image/*.png' -a -r 50 -z 3
 
 ```yaml
 Required arguments:
--a, --assemble          prepares the script for an image sequence
+  -a, --assemble          prepares the script for an image sequence
 
 Optional arguments:
--h, --help              show this help message and exit
--r, --fps               set the fps of the resultant GIF
--z, --optimise          optimise GIF file size with zero quality penalty (1 - 3)
--l, --lossy             number of artefacts allowed for compression (0 - 200)
--w, --transparent       enables transparency
+  -h, --help              show this help message and exit
+  -r, --fps               set the fps of the resultant GIF
+  -z, --optimise          optimise GIF file size with zero quality penalty (1 - 3)
+  -l, --lossy             number of artefacts allowed for compression (0 - 200)
+  -w, --transparent       enables transparency
 ```
 
 ## Frequently Asked Questions

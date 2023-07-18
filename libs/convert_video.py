@@ -1,5 +1,5 @@
 import ffmpeg
-from typing_extensions import Self
+from typing import Self
 
 from libs import Convert
 
@@ -9,7 +9,7 @@ class ConvertVideo(Convert):
     def __init__(self, input_path: str, transparency: bool):
 
         super().__init__(input_path, transparency)
-        
+
         try:
             input_probe = ffmpeg.probe(input_path)
 

@@ -1,5 +1,5 @@
 import ffmpeg
-from typing_extensions import Self
+from typing import Self
 
 from libs import Convert
 
@@ -15,7 +15,7 @@ class ConvertSequence(Convert):
 
         if '*' not in self.input_path:
             raise ImageNotSequence("Input is not an image sequence. If you are on Linux, make sure that you have contained your file path with quotations. For example, 'image/*.png'")
-        
+
         output_name = 'sequence_converted'
         self.sequence_fps = sequence_fps
         self.output_path = f'{output_name}.gif'
@@ -27,7 +27,7 @@ class ConvertSequence(Convert):
         return super().generate_palette(stream)
 
     def to_gif(self) -> Self:
-        
+
         stream = (
             ffmpeg.filter([
                 ffmpeg.input(self.input_path, pattern_type='glob', framerate=self.sequence_fps if self.sequence_fps <= 50 else 50),
